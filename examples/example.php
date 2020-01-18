@@ -10,7 +10,7 @@ $tests = array(
     array("/post/1/10", "/post/{post_id}/{comment_id}"),
     array("/articles", "/articles"),
     array("/users","/usersss"),
-    array("/home", "/")
+    array("/home", "/{path:[A-Za-z]+}")
 );
 
 $start = microtime(true);

@@ -5,6 +5,7 @@ class RouteParser
 {
     private const PATTERN_START = '{';
     private const PATTERN_END = '}';
+    private const REGEX_START = ':';
 
     private $pattern;
 
@@ -29,6 +30,9 @@ class RouteParser
                 $key = "";
                 $value = "";
 
+                $regex = "";
+                $hasRegex = false;
+
                 $endChar = null;
 
                 /**
@@ -40,6 +44,10 @@ class RouteParser
                         $rIndex = $i + 1;
                         $endChar = $this->pattern[$i + 1] ?? null;
                         break;
+                    } elseif ($char == self::REGEX_START) {
+                        $hasRegex = true;
+                    } else if($hasRegex) {
+                        $regex .= $char;
                     } else {
                         $key .= $char;
                     }
@@ -53,6 +61,10 @@ class RouteParser
                     } else {
                         $value .= $char;
                     }
+                }
+
+                if($hasRegex && !preg_match('/'.$regex.'/', $value)) {
+                    return false;
                 }
 
                 $results[$key] = $value;
