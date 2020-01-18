@@ -63,7 +63,7 @@ class RouteParser
                     }
                 }
 
-                if(strlen($value) == 0 || $hasRegex && !preg_match('/'.$regex.'/', $value)) {
+                if(strlen($value) == 0 || $hasRegex && !preg_match('/^'.$regex.'$/', $value)) {
                     return false;
                 }
 
