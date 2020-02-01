@@ -9,7 +9,7 @@ $tests = array(
     array("/users/filippofinke","/users/{username}"),
     array("/post/1/10", "/post/{post_id}/{comment_id}"),
     array("/articles", "/articles"),
-    array("/users","/usersss"),
+    array("/users","/users/ss"),
     array("/home", "/{path:[A-Za-z]+}"),
     array("/home/as", "/{path:[A-Za-z]+}/asd"),
     array("/","/{name}")
