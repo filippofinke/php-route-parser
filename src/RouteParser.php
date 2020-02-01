@@ -21,7 +21,10 @@ class RouteParser
         $rIndex = 0;
         $parsing = true;
         while ($parsing) {
-            if (!isset($this->pattern[$rIndex])) {
+            
+            if (!isset($this->pattern[$rIndex]) && isset($url[$uIndex])) {
+                return false;
+            } else if(!isset($this->pattern[$rIndex])) {
                 break;
             }
 
