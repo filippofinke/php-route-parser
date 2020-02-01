@@ -16,7 +16,7 @@ class RouteParser
 
     public function parse($url)
     {
-        $results = [];
+        $results = null;
         $uIndex = 0;
         $rIndex = 0;
         $parsing = true;
@@ -76,6 +76,10 @@ class RouteParser
             $rIndex++;
             $uIndex++;
         }
-        return (count($results) > 0)?$results:true;
+        if(is_array($results)) {
+            return $results;
+        } else {
+            return ($url == $this->pattern);
+        }
     }
 }

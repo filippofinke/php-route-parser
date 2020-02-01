@@ -12,7 +12,7 @@ $tests = array(
     array("/users","/users/ss"),
     array("/home", "/{path:[A-Za-z]+}"),
     array("/home/as", "/{path:[A-Za-z]+}/asd"),
-    array("/","/{name}")
+    array("/administration/asd","/administration")
 
 );
 
